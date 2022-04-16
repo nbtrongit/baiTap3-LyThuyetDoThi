@@ -40,12 +40,10 @@ namespace BT3_LTDT
                     }
                 }
             }
-            int dem = 0;
             for (int i = 0; i <= tapCanh.Length - 2; i++)
             {
                 for (int j = 0; j <= tapCanh.Length - 2; j++)
                 {
-                    dem = dem + 1;
                     if (tapCanh[j].trongSo > tapCanh[j + 1].trongSo)
                     {
                         Canh trungGian = tapCanh[j + 1];
@@ -55,6 +53,61 @@ namespace BT3_LTDT
                 }
             }
             return tapCanh;
+        }
+        public static bool kiemTraChuTrinh(Canh[] tapCanh, int index, int[] Nhan)
+        {
+            if(Nhan[tapCanh[index].Dau] == Nhan[tapCanh[index].Cuoi])
+            {
+                return true;
+            }
+            return false;
+        }
+        public static int[] doiNhan(int a, int b, int[] Nhan)
+        {
+            int[] nhanMoi = Nhan;
+            for (int i = 0; i < nhanMoi.Length; i++)
+            {
+                if(nhanMoi[i] == a)
+                {
+                    nhanMoi[i] = b;
+                }
+            }
+            return nhanMoi;
+        }
+        public static void Kruskal (maTranKe AM)
+        {
+            Canh[] dsCanh = dsTapCanh(AM);
+            Canh[] cayKhung = new Canh[AM.n - 1];
+            int indexT = 0;
+            int[] Nhan = new int[AM.n];
+            int indexCanhMin = 0;
+            for (int i = 0; i < Nhan.Length; i++)
+            {
+                Nhan[i] = i;
+            }
+            while (indexT < AM.n - 1)
+            {
+                if (kiemTraChuTrinh(dsCanh, indexCanhMin, Nhan) == false)
+                {
+                    Nhan = doiNhan(dsCanh[indexCanhMin].Cuoi, dsCanh[indexCanhMin].Dau, Nhan);
+                    cayKhung[indexT] = dsCanh[indexCanhMin];
+                    indexCanhMin++;
+                    indexT++;
+                }
+                else
+                {
+                    indexCanhMin++;
+                    continue;
+                }
+            }
+            int tong = 0;
+            Console.WriteLine("Tập cạnh có cây khung nhỏ nhất");
+            for (int i = 0; i < cayKhung.Length; i++)
+            {
+                Console.WriteLine($"{cayKhung[i].Dau}-{cayKhung[i].Cuoi}: {cayKhung[i].trongSo}");
+                tong += cayKhung[i].trongSo;
+            }
+            Console.WriteLine($"Trọng số của cây khung nhỏ nhất: {tong}");
         }
     }
 }

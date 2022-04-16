@@ -10,7 +10,7 @@ namespace BT3_LTDT
     {
         public static void Prim(maTranKe AM, int dinhBatDau)
         {
-            Canh[] tapCanh = new Canh[AM.n - 1];
+            Canh[] cayKhung = new Canh[AM.n - 1];
             int indexT = 0;
             bool[] tapDinh = new bool[AM.n];
             tapDinh[dinhBatDau] = true;
@@ -38,17 +38,17 @@ namespace BT3_LTDT
                         }
                     }
                 }
-                tapCanh[indexT] = Min;
+                cayKhung[indexT] = Min;
                 indexT++;
                 tapDinh[Min.Cuoi] = true;
                 tapDinh[Min.Dau] = true;
             }
             int tong = 0;
             Console.WriteLine("Tập cạnh có cây khung nhỏ nhất");
-            for (int i = 0; i < tapCanh.Length; i++)
+            for (int i = 0; i < cayKhung.Length; i++)
             {
-                Console.WriteLine($"{tapCanh[i].Dau}-{tapCanh[i].Cuoi}: {tapCanh[i].trongSo}");
-                tong += tapCanh[i].trongSo;
+                Console.WriteLine($"{cayKhung[i].Dau}-{cayKhung[i].Cuoi}: {cayKhung[i].trongSo}");
+                tong += cayKhung[i].trongSo;
             }
             Console.WriteLine($"Trọng số của cây khung nhỏ nhất: {tong}");
         }

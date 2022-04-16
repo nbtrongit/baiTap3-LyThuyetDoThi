@@ -34,18 +34,15 @@ namespace BT3_LTDT
             }
             else
             {
-                /* maTranKe AM = maTran(filename);
+                Console.WriteLine("Thuật toán Prim");
+                maTranKe AM = maTran(filename);
                 Console.WriteLine("Nhập đỉnh bắt đầu thuật toán Prim");
                 int dinhBatDau = int.Parse(Console.ReadLine());
-                thuatToanPrim.Prim(AM, dinhBatDau);*/
-
+                thuatToanPrim.Prim(AM, dinhBatDau);
+                Console.WriteLine();
+                Console.WriteLine("Thuật toán Kruskal");
                 maTranKe AM1 = maTran(filename);
-                Canh[] a = thuatToanKruskal.dsTapCanh(AM1);
-                for (int i = 0; i < a.Length; i++)
-                {
-                    Console.WriteLine($"{a[i].Dau}-{a[i].Cuoi}: {a[i].trongSo}");
-                }
-
+                thuatToanKruskal.Kruskal(AM1);
             }
         }
     }
