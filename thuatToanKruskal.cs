@@ -89,7 +89,7 @@ namespace BT3_LTDT
             {
                 if (kiemTraChuTrinh(dsCanh, indexCanhMin, Nhan) == false)
                 {
-                    Nhan = doiNhan(dsCanh[indexCanhMin].Cuoi, dsCanh[indexCanhMin].Dau, Nhan);
+                    Nhan = doiNhan(Nhan[dsCanh[indexCanhMin].Cuoi], Nhan[dsCanh[indexCanhMin].Dau], Nhan);
                     cayKhung[indexT] = dsCanh[indexCanhMin];
                     indexCanhMin++;
                     indexT++;
